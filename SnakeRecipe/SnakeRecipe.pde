@@ -36,8 +36,8 @@ class Segment {
   int points = 1;
 
   // 8. Create and initialize foodX and foodY variables to hold the location of the food.
-  int foodX = 0;
-  int foodY = 0;
+  int foodX = new int();
+  int foodY = new int();
   // (Hint: use the random method to set both the x and y to random locations within the screen size (500 by 500).)
 
   foodX = (int)random(500);
@@ -66,13 +66,13 @@ void draw() {
 
   //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
 }
-
+/*
  manageTail();
  drawFood();
  drawSnake();
  move();
  collision();
- 
+ */
 // 13. Complete the drawFood method below. (Hint: each piece of food should be a 10 by 10 rectangle).
 
 void drawFood() {
@@ -211,4 +211,5 @@ void checkTailCollision() {
   // reset your food variable
 
   //Call this method at the beginning of your manageTail method.
+}
 }
