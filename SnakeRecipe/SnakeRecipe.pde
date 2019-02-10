@@ -12,18 +12,23 @@ class Segment {
   Segment(int x, int y) {
     this.x = x;
     this.y = y;
-
-    // 4. Add getter and setter methods for both the x and y member variables.
   }
+    // 4. Add getter and setter methods for both the x and y member variables.
   public int xGet() {
     return x;
   }
   public int yGet() {
     return y;
   }
-
+  public int xSet(){
+   this.x = x; 
+  }
+  public int ySet(){
+   this.y = y; 
+  }
+}
   // 5. Create (but do not initialize) a Segment variable to hold the head of the Snake
-  Segment head = new Segment(250,250);
+  Segment head;
 
 
   // 6. Create and initialize a String to hold the direction of your snake e.g. "up"
@@ -42,7 +47,7 @@ class Segment {
 
   foodX = (int)random(500);
   foodY = (int)random(500);
-}
+
 void setup() {
 
   // 9. Set the size of your sketch (500 by 500).
@@ -52,7 +57,7 @@ void setup() {
 
   // 10. initialize your head to a new segment.
 
-head = head(200,200);
+head = new Segment(250,250);
 
   // 11. Use the frameRate(int rate) method to set the rate to 20.
   frameRate(20);
@@ -62,16 +67,16 @@ head = head(200,200);
 void draw() {
 
   background(0);
-
-
-  //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
-}
-/*
  manageTail();
  drawFood();
  drawSnake();
  move();
  collision();
+
+  //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
+}
+/*
+
  */
 // 13. Complete the drawFood method below. (Hint: each piece of food should be a 10 by 10 rectangle).
 
@@ -98,16 +103,16 @@ void move() {
   
   switch(dir) {
    case "up":
-   head = head(x+10,y);
+   head.getY(head.getY() - 10);
    break;
    case "down":
-   head = head(x-10,y);
+   head.getY(head.getY() + 10);
    break;
    case "left":
-   head = head(x,y-10);
+   head.getX(head.getX() - 10);
    break;
    case "right":
-   head = head(x,y+10);
+   head.getX(head.getX() + 10);
    break;
    }
    
@@ -121,23 +126,25 @@ void move() {
 // 18. Complete the keyPressed method below. Use if statements to set your direction variable depending on what key is pressed.
 
 void keyPressed() {
-  if("UP" == true){
+  if(keycode == "38"){
     if(switch(dir) != "down"){
     switch("up");
     }
   }
-  else if("DOWN" == true){
+  else if(keycode == "40"){
       if(switch(dir) != "up"){
     switch("down");
     }
   }
-    else if("LEFT" == true){
-      if(switch(dir) != "down"){
-    switch("up");
+    else if(keycode == "37"){
+      if(switch(dir) != "right"){
+    switch("left");
     }
   }
-    else if("RIGHT" == true){
-   switch("right"); 
+    else if(keycode == "39"){
+   if(switch(dir) != "left"){
+    switch("right");
+    }
   }
 }
 
@@ -183,17 +190,21 @@ void collision() {
  **/
 
 //  1. Create and initialize an ArrayList of Segments. (This will be your snake tail!)
-
+ArrayList<Segment> tail = new ArrayList<Segment>();
 
 // 2. Complete the missing parts of the manageTail method below and call it in the draw method.
 
 void manageTail() {
 
   //Call the drawTail and checkTailCollision methods.
-
+drawTail();
+checkTailCollision();
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
-
+tail.add(Segment(x,y));
   // To keep your tail the right length:
+  if(tail.size() > points){
+    
+  }
   // while the tail size is greater than the number of food pieces eaten, remove the first Segment in your tail.
 }
 
