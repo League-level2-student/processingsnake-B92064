@@ -153,17 +153,17 @@ void keyPressed() {
 // 19. check if your head is out of bounds (teleport your snake head to the other side).
 
 void checkBoundaries() {
-  if(x>500){
-    x=0;
+  if(xGet>500){
+    xGet=0;
   }
-  else if(x<0){
-   x=500; 
+  else if(xGet<0){
+   xGet=500; 
   }
-    if(y>500){
-    y=0;
+    if(yGet>500){
+    yGet=0;
   }
-  else if(y<0){
-   y=500; 
+  else if(yGet<0){
+   yGet=500; 
   }
 }
 
@@ -200,7 +200,7 @@ void manageTail() {
 drawTail();
 checkTailCollision();
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
-tail.add(Segment(x,y));
+tail.add(Segment(xGet,yGet));
   // To keep your tail the right length:
   if(tail.size() > points){
     
