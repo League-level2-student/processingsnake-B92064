@@ -30,7 +30,7 @@ class Segment {
 // 5. Create (but do not initialize) a Segment variable to hold the head of the Snake
 Segment head;
 
-
+boolean visible= false;
 // 6. Create and initialize a String to hold the direction of your snake e.g. "up"
 
 String direction = "up";
@@ -73,6 +73,11 @@ void draw() {
   } else if (foodY %10!= 0) {
     foodY = (int)random(500);
   }
+  if(foodY  %10 == 0 && foodX%10 ==0){
+    visible = true;
+  }else if (foodY  %10 == 0 && foodX%10 ==0){
+   visible =false; 
+  }
   manageTail();
   drawFood();
   drawSnake();
@@ -87,8 +92,9 @@ void draw() {
 // 13. Complete the drawFood method below. (Hint: each piece of food should be a 10 by 10 rectangle).
 
 void drawFood() {
-
+if(visible == true){
   rect(foodX, foodY, 10, 10);
+}
 }
 
 
@@ -183,6 +189,7 @@ void collision() {
     points++;
     foodX = (int)random(500);
     foodY = (int)random(500);
+    visible = false;
   }
   // If the segment is colliding with a piece of food...
   // Increase the amount of food eaten and set foodX and foodY to new random locations.
