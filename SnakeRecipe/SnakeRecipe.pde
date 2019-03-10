@@ -58,7 +58,7 @@ void setup() {
   head = new Segment(250, 250);
 
   // 11. Use the frameRate(int rate) method to set the rate to 20.
-  frameRate(20);
+  frameRate(19);
 }
 
 
@@ -83,7 +83,7 @@ void draw() {
   drawSnake();
   move();
   collision();
-
+println(points);
   //12. Call the manageTail, drawFood, drawSnake, move, and collision methods.
 }
 /*
@@ -216,7 +216,7 @@ void manageTail() {
   // Add a new Segment to your ArrayList that has the same X and Y as the head of your snake.
   tail.add(new Segment(head.xGet(), head.yGet()));
   // To keep your tail the right length:
-  if (tail.size() > points) {
+  while (tail.size() > points) {
     tail.remove(0);
   }
   // while the tail size is greater than the number of food pieces eaten, remove the first Segment in your tail.
@@ -239,7 +239,6 @@ void drawTail() {
 void checkTailCollision() {
   for (int i =0; i < tail.size(); i++) {
     if (head.xGet() == tail.get(i).x && head.yGet() == tail.get(i).y) {
-      println(points);
       points =0;
     }
   }
